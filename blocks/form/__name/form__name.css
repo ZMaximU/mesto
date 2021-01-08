@@ -8,6 +8,10 @@
   border: 0px;
 }
 
+.form__name:focus{
+  outline: none;
+}
+
 @media screen and (max-width: 580px) {
   .form__name {
     margin: 75px 22px 0px;
