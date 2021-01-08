@@ -1,0 +1,16 @@
+.form__occupation {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 30px 36px 0px;
+  width: 358px;
+  border: 0px;
+}
+
+@media screen and (max-width: 580px) {
+  .form__occupation {
+    margin: 30px 22px 0px;
+    width: 238px;
+  }
+}

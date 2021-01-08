@@ -1,13 +1,90 @@
 <!DOCTYPE html>
 <html lang="ru">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mesto</title>
-  <link rel="stylesheet" href="pages/index.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+    <link rel="stylesheet" href="pages/index.css">
+  </head>
 
-<body>
-  
-</body>
+  <body class="root">
+    <div class="page">
+      <header class="header">
+        <img class="header__logo" src="image/Vector.svg">
+        <img class="header__line" src="image/Line.svg">
+      </header>
+      <section class="profile">
+        <div class="profile__cart">
+          <img class="profile__avatar" src="image/image.png">
+          <div class="profile__info">
+            <h1 class="profile__info-name">Жак-Ив Кусто</h1>
+            <button class="profile__info-button"><img class="profile__info-image" src="image/Vector2.svg"></button>
+            <p class="profile__info-occupation">Исследователь океана</p>
+          </div>
+        </div>
+        <button class="profile__button"><img class="profile__button-image" src="image/Vector1.svg"></button>
+      </section>
+      <section class="elements">
+        <div class="element">
+          <img class="element__image" src="image/kirill-pershin-1088404-unsplash.png">
+          <div class="element__group">
+            <p class="element__name">Карачаевск</p>
+            <button class="element__button"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="image/kirill-pershin-1404681-unsplash.png">
+          <div class="element__group">
+            <p class="element__name">Гора Эльбрус</p>
+            <button class="element__button"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="image/kirill-pershin-1556355-unsplash.png">
+          <div class="element__group">
+            <p class="element__name">Домбай</p>
+            <button class="element__button"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="image/kirill-pershin-1404681-unsplash.png">
+          <div class="element__group">
+            <p class="element__name">Гора Эльбрус</p>
+            <button class="element__button"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="image/kirill-pershin-1556355-unsplash.png">
+          <div class="element__group">
+            <p class="element__name">Домбай</p>
+            <button class="element__button"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="image/kirill-pershin-1088404-unsplash.png">
+          <div class="element__group">
+            <p class="element__name">Карачаевск</p>
+            <button class="element__button"></button>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <p class="footer__text">© 2020 Mesto Russia</p>
+      </footer>
+    </div>
+    <form class="form form_hiden">
+      <div class="form__body">
+        <div class="form__content">
+          <p class="form__title">Редактировать профиль</p>
+          <input class="form__name" type="text">
+          <img class="form__line">
+          <input class="form__occupation" type="text">
+          <img class="form__line">
+          <button class="form__button">Сохранить</button>
+          <button class="form__close"><img class="form__close-image" src="image/Vector1.svg"></button>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

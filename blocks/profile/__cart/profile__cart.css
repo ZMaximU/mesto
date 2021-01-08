@@ -1,0 +1,10 @@
+.profile__cart {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 680px) {
+  .profile__cart {
+    flex-direction: column;
+  }
+}
