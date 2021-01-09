@@ -4,6 +4,7 @@
   padding: 0px;
   border: 0px;
   background-image: url('../../../image/Vector3.svg');
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .element__button:hover {
