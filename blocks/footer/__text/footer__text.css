@@ -3,13 +3,11 @@
   line-height: 22px;
   color: #545454;
   margin: 0px;
-  height: 18px;
 }
 
 @media screen and (max-width: 680px) {
   .footer__text {
     font-size: 14px;
     line-height: 17px;
-    height: 14px;
   }
 }
