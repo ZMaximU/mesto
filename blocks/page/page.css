@@ -1,4 +1,10 @@
 .page {
   color: white;
-  max-width: 880px;
+  width: 100%;
+}
+
+@media screen and (min-width: 680px) {
+  .page {
+    max-width: 880px;
+  }
 }

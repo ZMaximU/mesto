@@ -2,7 +2,6 @@ let popup = document.querySelector('.form');
 let form = document.querySelector('form');
 let editorButton = document.querySelector('.profile__info-button');
 let closeButton = document.querySelector('.form__close');
-let saveButton = document.querySelector('.form__button');
 let name = document.querySelector('.profile__info-name');
 let occupation = document.querySelector('.profile__info-occupation');
 let nameInput = document.querySelector('.form__input_name');
