@@ -1,0 +1,5 @@
+.element__button_active {
+  border: none;
+  opacity:1;
+  background-image: url('../../../../image/Vector4.svg');
+}

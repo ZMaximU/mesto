@@ -5,6 +5,7 @@
   border: 0px;
   background-image: url('../../../image/Vector3.svg');
   background-color: rgba(0, 0, 0, 0);
+  flex: 0 0 22px;
 }
 
 .element__button:hover {
@@ -13,10 +14,4 @@
 
 .element__button:focus{
   outline: none;
-}
-
-.element__button:active {
-  border: none;
-  opacity:1;
-  background-image: url('../../../image/Vector4.svg');
 }
