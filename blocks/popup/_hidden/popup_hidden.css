@@ -1,7 +1,7 @@
 .popup_hidden {
   visibility: hidden;
-  transition: visibility 3s;
-  animation: fadeOut ease 3s;
+  transition: visibility 1s;
+  animation: fadeOut ease 1s;
 }
 
 @keyframes fadeOut {

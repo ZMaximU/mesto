@@ -28,7 +28,7 @@
       </section>
       <section class="elements">
         <template id="element-template">
-          <div class="element" data-index="">
+          <div class="element">
             <img class="element__image" src="image/Vector3.svg" alt="1">
             <div class="element__group">
               <h2 class="element__name"></h2>
@@ -42,33 +42,33 @@
         <p class="footer__text">© 2020 Mesto Russia</p>
       </footer>
     </div>
-    <div class="form form_hidden" id="profile">
-        <div class="form__content">
-          <h2 class="form__title">Редактировать профиль</h2>
-          <form name="form-profile">
-            <input class="form__input_name form__input" name="name" placeholder="Имя">
-            <input class="form__input_occupation form__input" name="occupation" placeholder="Деятельность">
-            <button class="form__button" type="submit">Сохранить</button>
+    <div class="popup popup_hidden" id="profile">
+        <div class="popup__content">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <form name="popup-profile">
+            <input class="popup__input_name popup__input" name="name" placeholder="Имя">
+            <input class="popup__input_occupation popup__input" name="occupation" placeholder="Деятельность">
+            <button class="popup__button" type="submit">Сохранить</button>
           </form>
-          <button class="form__close" type="button"><img class="form__close-image" src="image/Vector1.svg" alt="Закрыть"></button>
+          <button class="popup__close" type="button"><img class="popup__close-image" src="image/Vector1.svg" alt="Закрыть"></button>
         </div>
     </div>
-    <div class="form form_hidden" id="cart">
-      <div class="form__content">
-        <h2 class="form__title">Новое место</h2>
-        <form name="form-card">
-          <input class="form__input_title form__input" name="title" placeholder="Название">
-          <input class="form__input_link form__input" name="link" placeholder="Ссылка на картинку">
-          <button class="form__button" type="submit">Создать</button>
+    <div class="popup popup_hidden" id="cart">
+      <div class="popup__content">
+        <h2 class="popup__title">Новое место</h2>
+        <form name="popup-card">
+          <input class="popup__input_title popup__input" name="title" placeholder="Название">
+          <input class="popup__input_link popup__input" name="link" placeholder="Ссылка на картинку">
+          <button class="popup__button" type="submit">Создать</button>
         </form>
-        <button class="form__close" type="button" id="cartClose"><img class="form__close-image" src="image/Vector1.svg" alt="Закрыть"></button>
+        <button class="popup__close" type="button" id="cartClose"><img class="popup__close-image" src="image/Vector1.svg" alt="Закрыть"></button>
       </div>
     </div>
-    <div class="popup popup_hidden" id="image">
-      <div class="popup__content">
+    <div class="popup popup_hidden popup_opacity" id="image">
+      <div class="popup__content-image">
         <img class='popup__image' src="image/Vector3.svg" alt="1">
         <p class="popup__text"></p>
-        <button class="popup__close" type="button"><img class="popup__close-image" src="image/Vector1.svg" alt="Закрыть"></button>
+        <button class="popup__close" type="button" id="imageClose"><img class="popup__close-image" src="image/Vector1.svg" alt="Закрыть"></button>
       </div>
     </div>
     <script src="scripts/script.js"></script>

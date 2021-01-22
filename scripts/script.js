@@ -1,90 +1,78 @@
-let popup = document.querySelector('#profile');
-let profileForm = document.querySelector('form[name="form-profile"]');
-let editorButton = document.querySelector('#editProfile');
-let closeButton = document.querySelector('.form__close');
-let name = document.querySelector('.profile__info-name');
-let occupation = document.querySelector('.profile__info-occupation');
-let nameInput = document.querySelector('.form__input_name');
-let occupationInput = document.querySelector('.form__input_occupation');
+const profileElement = document.querySelector('#profile');
+const profileForm = document.querySelector('form[name="popup-profile"]');
+const editorButton = document.querySelector('#editProfile');
+const closeButton = document.querySelector('.popup__close');
+const name = document.querySelector('.profile__info-name');
+const occupation = document.querySelector('.profile__info-occupation');
+const nameInput = document.querySelector('.popup__input_name');
+const occupationInput = document.querySelector('.popup__input_occupation');
 
 const elementTemplate = document.querySelector('#element-template').content;
 const cardsElement = document.querySelector('.elements');
 
-function closeForm() {
-  popup.classList.add('form_hidden');
+function closePopup(popup) {
+  popup.classList.add('popup_hidden');
 }
 
-closeButton.addEventListener('click', closeForm);
+closeButton.addEventListener('click', () => closePopup(profileElement));
 
-function openForm() {
-  popup.classList.remove('form_hidden');
+function openPopup(popup) {
+  popup.classList.remove('popup_hidden');
+}
+
+function openProfile() {
   nameInput.value = name.textContent;
   occupationInput.value = occupation.textContent;
+  openPopup(profileElement);
 }
 
-editorButton.addEventListener('click', openForm);
+editorButton.addEventListener('click', () => openProfile());
 
 function saveProfile(event) {
-  event.preventDefault();  
+  event.preventDefault();
   name.textContent = nameInput.value;
   occupation.textContent = occupationInput.value;
-  closeForm();
+  closePopup(profileElement);
 }
 
 profileForm.addEventListener('submit', saveProfile);
 
-let cart = document.querySelector('#cart');
-let cartEdit = document.querySelector('#cartEdit');
-let cartClose = document.querySelector('#cartClose');
-let titleInput = document.querySelector('.form__input_title');
-let linkInput = document.querySelector('.form__input_link');
+const cardElement = document.querySelector('#cart');
+const cardEdit = document.querySelector('#cartEdit');
+const cardClose = document.querySelector('#cartClose');
+const titleInput = document.querySelector('.popup__input_title');
+const linkInput = document.querySelector('.popup__input_link');
 
-function closeCart() {
-  cart.classList.add('form_hidden');
-}
+cardClose.addEventListener('click', () => closePopup(cardElement));
 
-cartClose.addEventListener('click', closeCart);
+cardEdit.addEventListener('click', () => openPopup(cardElement));
 
-function openCart() {
-  cart.classList.remove('form_hidden');
-}
-
-cartEdit.addEventListener('click', openCart);
-
-let cardForm = document.querySelector('form[name="form-card"]');
+const cardForm = document.querySelector('form[name="popup-card"]');
 
 cardForm.addEventListener('submit', saveCard);
 
 function saveCard(event) {
-  event.preventDefault();  
-  const card = 
-  { 
-    name : titleInput.value,  
-    link : linkInput.value
+  event.preventDefault();
+  const card =
+  {
+    name: titleInput.value,
+    link: linkInput.value
   };
-  drawCard(card);
-  cart.classList.add('form_hidden');
+  cards.push(card);
+  cardsElement.prepend(getCardElement(card));
+  closePopup(cardElement);
 }
 
 function like(event) {
-  const index = event.target.parentElement.parentElement.getAttribute('data-index');
-  if (event.target.classList.contains('element__button_active')){
-    event.target.classList.remove('element__button_active')
-  }
-  else {
-    event.target.classList.add('element__button_active')
-  }
-//  cards[index].like = true;
+  event.target.classList.toggle('element__button_active');
 }
 
-function deleteCard(event){
-    event.target.parentElement.remove();
+function deleteCard(event) {
+  event.target.closest('.element').remove();
 }
 
-function drawCard(card) {
-  cards.push(card);
+function getCardElement(card) {
   const cardElement = elementTemplate.cloneNode(true);
-  cardElement.querySelector('.element').setAttribute("data-index", cards.indexOf(card));
   cardElement.querySelector('.element .element__image').src = card.link;
   cardElement.querySelector('.element .element__image').alt = card.name;
   cardElement.querySelector('.element__group .element__name').textContent = card.name;
@@ -92,9 +80,9 @@ function drawCard(card) {
   likeButton.addEventListener('click', like);
   const deleteButton = cardElement.querySelector('.element__delete');
   deleteButton.addEventListener('click', deleteCard);
-  const elementImage = cardElement.querySelector('.element__image')
-  elementImage.addEventListener('click', openPopup)
-  cardsElement.prepend(cardElement);  
+  const elementImage = cardElement.querySelector('.element__image');
+  elementImage.addEventListener('click', openImagePopup);
+  return cardElement;
 }
 
 const initialCards = [
@@ -125,22 +113,18 @@ const initialCards = [
 ];
 
 const cards = [];
-initialCards.forEach(c=>drawCard(c));
+initialCards.forEach(c => cardsElement.prepend(getCardElement(c)));
 
-const popupImage = document.querySelector('#image')
+const popupImage = document.querySelector('#image');
+const image = document.querySelector('.popup__image');
+const text = document.querySelector('.popup__text');
 
-function openPopup(event) {
-  const image = document.querySelector('.popup__image');
-  const text = document.querySelector('.popup__text')
+function openImagePopup(event) {
   image.src = event.target.src;
   image.alt = event.target.alt;
   text.textContent = event.target.alt;
-  popupImage.classList.remove('popup_hidden')
+  openPopup(popupImage);
 }
 
-function closePopup() {
-  popupImage.classList.add('popup_hidden')
-}
-
-const closePopupImage = document.querySelector('.popup__close')
-closePopupImage.addEventListener('click', closePopup)
+const closePopupImage = document.querySelector('#imageClose')
+closePopupImage.addEventListener('click', () => closePopup(popupImage))
