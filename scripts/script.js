@@ -23,6 +23,8 @@ function openPopup(popup) {
 function openProfile() {
   nameInput.value = name.textContent;
   occupationInput.value = occupation.textContent;
+  validateForm(profileForm);
+  toggleButtonState(Array.from(profileForm.querySelectorAll('.popup__input')), profileForm.querySelector('.popup__button'));
   openPopup(profileElement);
 }
 
@@ -42,12 +44,11 @@ const cardEdit = document.querySelector('#cartEdit');
 const cardClose = document.querySelector('#cartClose');
 const titleInput = document.querySelector('.popup__input_title');
 const linkInput = document.querySelector('.popup__input_link');
+const cardForm = document.querySelector('form[name="popup-card"]');
 
 cardClose.addEventListener('click', () => closePopup(cardElement));
 
-cardEdit.addEventListener('click', () => openPopup(cardElement));
-
-const cardForm = document.querySelector('form[name="popup-card"]');
+cardEdit.addEventListener('click', () => {openPopup(cardElement); validateForm(cardForm)});
 
 cardForm.addEventListener('submit', saveCard);
 
@@ -128,3 +129,18 @@ function openImagePopup(event) {
 
 const closePopupImage = document.querySelector('#imageClose')
 closePopupImage.addEventListener('click', () => closePopup(popupImage))
+
+document.querySelectorAll('.popup').forEach(element => element.addEventListener('click', (evt) => {
+  if (evt.target === element) {
+    closePopup(element);
+  }
+ }));
+
+document.body.addEventListener('keydown', (evt) => {
+  if (evt.keyCode === 27) {
+    const element = document.querySelector('.popup:not(.popup_hidden)');
+    if(element) {
+      closePopup(element);
+    }
+  }
+});
