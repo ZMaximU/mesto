@@ -1,5 +1,6 @@
 const profileElement = document.querySelector('#profile');
 const profileForm = document.querySelector('form[name="popup-profile"]');
+const profileFormSubmit = profileForm.querySelector('.popup__button');
 const editorButton = document.querySelector('#editProfile');
 const closeButton = document.querySelector('.popup__close');
 const name = document.querySelector('.profile__info-name');
@@ -12,19 +13,21 @@ const cardsElement = document.querySelector('.elements');
 
 function closePopup(popup) {
   popup.classList.add('popup_hidden');
+  document.body.removeEventListener('keydown', esc);
 }
 
 closeButton.addEventListener('click', () => closePopup(profileElement));
 
 function openPopup(popup) {
   popup.classList.remove('popup_hidden');
+  document.body.addEventListener('keydown', esc);
 }
 
 function openProfile() {
   nameInput.value = name.textContent;
   occupationInput.value = occupation.textContent;
   validateForm(profileForm);
-  toggleButtonState(Array.from(profileForm.querySelectorAll('.popup__input')), profileForm.querySelector('.popup__button'));
+  toggleButtonState([nameInput, occupationInput], profileFormSubmit);
   openPopup(profileElement);
 }
 
@@ -136,11 +139,9 @@ document.querySelectorAll('.popup').forEach(element => element.addEventListener(
   }
  }));
 
-document.body.addEventListener('keydown', (evt) => {
+function esc (evt) {
   if (evt.keyCode === 27) {
     const element = document.querySelector('.popup:not(.popup_hidden)');
-    if(element) {
-      closePopup(element);
-    }
+    closePopup(element);
   }
-});
+};
