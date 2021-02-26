@@ -21,14 +21,12 @@ export default class FormValidator {
   enableValidation() {
     this._inputs.forEach(formInput => {
       const formError = this._form.querySelector(`.${formInput.id}-error`);
-      formInput.addEventListener('input', () => {
+      formInput.addEventListener('input', (evt) => {
+        evt.preventDefault();
         this._isValid(formInput, formError);
         this._toggleButtonState();
       });
     });
-
-    this._validateForm();
-    this._toggleButtonState();
   }
 
   _showInputError(formInput, formError) {
@@ -56,7 +54,7 @@ export default class FormValidator {
   }
 
   _toggleButtonState() {
-    this._button.disabled = this._hasInvalidInput();
+    this._button.disabled = this._hasInvalidInput(); //эта строчка изменяет атрибут disabled
     if (this._button.disabled) {
       this._button.classList.add(this._inactiveButtonClass);
     } else {
