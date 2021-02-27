@@ -24,7 +24,7 @@ function openProfile() {
 editorButton.addEventListener('click', () => openProfile());
 
 function saveProfile(event) {
-  event.preventDefault();
+  event.preventDefault(); //Эта строчка сбрасывает поведение события по умолчанию
   name.textContent = nameInput.value;
   occupation.textContent = occupationInput.value;
   closePopup(profileElement);
@@ -46,14 +46,14 @@ cardEdit.addEventListener('click', () => openPopup(cardElement));
 
 cardForm.addEventListener('submit', saveCard);
 
-function newCard(title, link, template) {
+function createCard(title, link, template) {
   const card = new Card(title, link, template)
   cardsElement.prepend(card.getCardElement());
 }
 
 function saveCard(event) {
   event.preventDefault();
-  newCard(titleInput.value, linkInput.value, '#element-template')
+  createCard(titleInput.value, linkInput.value, '#element-template')
   closePopup(cardElement);
   cardElement.querySelector('.popup__button').disabled = true;
 }
@@ -86,7 +86,7 @@ const initialCards = [
 ];
 
 initialCards.forEach(c => {
-  newCard(c.name, c.link, '#element-template')
+  createCard(c.name, c.link, '#element-template')
 });
 
 document.querySelectorAll('.popup').forEach(element => element.addEventListener('click', (evt) => {
