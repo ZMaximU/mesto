@@ -1,10 +1,9 @@
-import {openPopup, closePopup} from './utils.js'
-
 export default class Card {
-  constructor(name, link, template) {
+  constructor(name, link, template, handleCardClick) {
     this._name = name;
     this._link = link;
-    this._template = template;
+    this._template = template;    
+    this._handleCardClick = handleCardClick;
   }
 
   _like(event) {
@@ -15,17 +14,7 @@ export default class Card {
     event.target.closest('.element').remove();
   }
 
-  _openImagePopup(event) {
-    const popupImage = document.querySelector('#image');
-    const image = document.querySelector('.popup__image');
-    const text = document.querySelector('.popup__text');
-    image.src = event.target.src;
-    image.alt = event.target.alt;
-    text.textContent = event.target.alt;
-    openPopup(popupImage);   
-  }
-
-  getCardElement() {
+  renderer() {
     const cardElement = document.querySelector(this._template).content.cloneNode(true);
     const image = cardElement.querySelector('.element .element__image');
     image.src = this._link;
@@ -36,7 +25,7 @@ export default class Card {
     const deleteButton = cardElement.querySelector('.element__delete');
     deleteButton.addEventListener('click', this._deleteCard);
     const elementImage = cardElement.querySelector('.element__image');
-    elementImage.addEventListener('click', this._openImagePopup);
+    elementImage.addEventListener('click', this._handleCardClick);
     return cardElement;
   }
 
