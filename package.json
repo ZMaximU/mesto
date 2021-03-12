@@ -2,7 +2,7 @@
   "name": "mesto",
   "version": "1.0.0",
   "description": "* Проект создан для просмотра интересных фотографий и возможности поделиться ими.",
-  "main": "/scripts/script.js",
+  "main": "src/pages/index.js",
   "dependencies": {
     "core-js": "^3.9.1"
   },
