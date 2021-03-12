@@ -25,19 +25,26 @@ export default class FormValidator {
         evt.preventDefault();
         this._isValid(formInput, formError);
         this._toggleButtonState();
-      });
+      });      
+    });
+    this._form.addEventListener('reset', () => {
+      this._inputs.forEach((formInput) => {
+          const formError = this._form.querySelector(`.${formInput.id}-error`);
+          this._hideInputError(formInput, formError);
+          this._toggleButtonState();
+      })
     });
   }
 
   _showInputError(formInput, formError) {
     formInput.classList.add(this._inputErrorClass);
-    formError.textContent = formInput.validationMessage;
-    formError.classList.add(this._errorClass);
+    formInput.classList.add(this._errorClass);
+    formError.textContent = formInput.validationMessage;    
   };
 
   _hideInputError(formInput, formError) {
     formInput.classList.remove(this._inputErrorClass);
-    formError.classList.remove(this._errorClass);
+    formInput.classList.remove(this._errorClass);
     formError.textContent = '';
   };
 
@@ -62,10 +69,4 @@ export default class FormValidator {
     }
   };
 
-  _validateForm() {
-    this._form.querySelectorAll('.popup__input').forEach(formInput => {
-      const formError = this._form.querySelector(`.${formInput.id}-error`);
-      this._isValid(formInput, formError);
-    });
-  }
 }
