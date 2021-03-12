@@ -3,7 +3,7 @@ const esc = 27; //приравниваем элемент esc к коду клю
 export class Popup {
   constructor (selector) {
     this._element = document.querySelector(selector);
-    this._closeButton = this._element.querySelector('.popup__close');
+    this._submitButton = this._element.querySelector('.popup__close');
     this._escCloseCallback = this._handleEscClose.bind(this);
     this._closeByCloseButton = this.close.bind(this);
     this._closeByClickOutsideForm = (event) => { 
@@ -31,6 +31,6 @@ export class Popup {
 
   setEventListeners() {
     this._element.addEventListener('click', this._closeByClickOutsideForm);
-    this._closeButton.addEventListener('click', this._closeByCloseButton);
+    this._submitButton.addEventListener('click', this._closeByCloseButton);
   }
 }
